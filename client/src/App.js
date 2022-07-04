@@ -7,7 +7,8 @@ function App() {
       <nav>
         <Link to='/login'>login</Link> <br></br>
         <Link to='/signup'>Signup</Link>
-      </nav>
+     </nav>
+
     </div>
   );
 }

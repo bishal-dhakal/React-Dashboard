@@ -1,81 +1,59 @@
 import React, { useState } from "react";
-import img from "/home/fueledbychiya/Downloads/Restaurant Outlet Managemnet System/App/client/src/Assets/login.jpg";
-import { useForm } from "react-hook-form";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({
-    criteriaMode: "all",
-  });
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(JSON.stringify(email));
     console.log(JSON.stringify(password));
   };
   return (
-    // full screen div
-    <div className="flex flex-row  h-screen p-20 bg-stone-100">
-      {/* inner div */}
-      <div className="flex flex-row w-full ">
-        {/* Formdiv */}
-        <div className=" bg-white  flex justify-center items-center w-1/2">
+    <div className="bg-slate-200 h-screen flex justify-center  items-center  ">
+      {/* Formdiv */}
+
+      <div className=" flex flex-col  h-3/5 w-2/5 bg-white rounded-lg p-20 space-y-16 ">
+        <div className=" flex flex-col items-center  space-y-3">
+          <h1 className="text-blue-500">
+            <b> Welcome Back </b>
+          </h1>
+          <p>Enter your credentials to access your account.</p>
+        </div>
+        <div className=" flex flex-col items-center ">
           <form
-            onSubmit={handleSubmit(onSubmit)}
-            className=" bg-white flex   flex-col   p-10 w-3/5 h-4/5  "
+            onSubmit={handleSubmit}
+            className=" flex flex-col space-y-4  w-3/5"
           >
             <input
-              className="rounded-lg  border-b-2  border-blue-400 p-3 m-1 w-4/5"
+              className="pl-5 p-1   border-solid border-2  rounded-lg"
               type="email"
-              {...register("email", {
-                required: true,
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "invalid email address",
-                },
-              })}
               placeholder="Email"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email?.type === "required" && "Email is required"}
-            {errors.email?.type === "pattern" && "Invalid Email"}
 
             <input
-              className="rounded-lg border-b-2 border-blue-400 p-3 m-1 w-4/5"
-              {...register("password", {
-                required: true,
-                minLength: {
-                  value: 8,
-                },
-              })}
+              className=" p-1 pl-5 border-solid border-2 rounded-lg"
               type="password"
               placeholder="Password"
+              required
+              minLength={8}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {errors.password?.type === "required" && " Paassword is empty "}
-            {errors.password?.type === "minLength" &&
-              " Password must exceed 10 characters "}
 
             {/* button */}
-            <div className=" flex flex-row justify-end  p-1 mt-2 w-4/5">
+            <div className=" ">
               <button
-                className=" rounded-lg h-10 w-20  border-2 border-blue-400 text-blue-400 "
+                className=" p-1 pl-2 border-solid border-2 rounded-lg bg-blue-500 text-white w-full "
                 type="submit"
               >
                 Login
               </button>
             </div>
           </form>
-        </div>
-
-        <div className="flex flex-row bg-red-200 w-1/2">
-          <img className="w-full h-full" src={img} alt="beach" />
         </div>
       </div>
     </div>
