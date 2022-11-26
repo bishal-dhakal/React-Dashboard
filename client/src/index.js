@@ -3,17 +3,19 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter , Routes , Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Login from './Components/Login/Login';
-import Signup from './Components/Signup/Signup';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>  
    <Routes>
     < Route path="/" element={<App/>} />
-    < Route path="/login" element={<Login/>} />
+     < Route path="/login" element={<Login/>} /> 
     < Route path="/signup" element={<Signup/>} />
-    </Routes>  
+    < Route path="/dashboard" element={<Dashboard/>} />
+    </Routes> 
   </BrowserRouter>
 );
 
